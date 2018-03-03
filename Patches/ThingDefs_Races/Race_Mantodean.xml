@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+	<Operation Class="PatchOperationAddModExtension">
+		<xpath>*/AlienRace.ThingDef_AlienRace[defName="Alien_Mantodean"]</xpath>
+		<value>
+			<li Class="CombatExtended.RacePropertiesExtensionCE">
+				<bodyShape>Humanoid</bodyShape>
+			</li>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>*/AlienRace.ThingDef_AlienRace[defName="Alien_Mantodean"]/tools</xpath>
+		<value>
+			<tools>
+			  <li Class="CombatExtended.ToolCE">
+					<label>left pincer</label>
+					<capacities>
+						<li>Cut</li>
+						<li>ToxicBite</li>
+					</capacities>
+					<power>10</power>
+					<cooldownTime>1.6</cooldownTime>
+					<linkedBodyPartsGroup>Leftpincer</linkedBodyPartsGroup>
+					<armorPenetration>0.2</armorPenetration>
+				</li>
+				<li Class="CombatExtended.ToolCE">
+					<label>right pincer</label>
+					<capacities>
+						<li>Cut</li>
+						<li>ToxicBite</li>
+					</capacities>
+					<power>10</power>
+					<cooldownTime>1.6</cooldownTime>
+					<linkedBodyPartsGroup>Rightpincer</linkedBodyPartsGroup>
+					<armorPenetration>0.2</armorPenetration>
+				</li>
+				<li Class="CombatExtended.ToolCE">
+					<label>teeth</label>
+					<capacities>
+						<li>Bite</li>
+						<li>ToxicBite</li>
+					</capacities>
+					<power>10</power>
+					<cooldownTime>1.4</cooldownTime>
+					<linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup>
+					<armorPenetration>0.3</armorPenetration>
+				</li>
+			</tools>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationSequence">
+  	<success>Always</success>
+  	<operations>
+    	<li Class="PatchOperationTest">
+      	<xpath>*/AlienRace.ThingDef_AlienRace[defName="Alien_Mantodean"]/comps</xpath>
+      	<success>Invert</success>
+    	</li>
+    	<li Class="PatchOperationAdd">
+      	<xpath>*/AlienRace.ThingDef_AlienRace[defName="Alien_Mantodean"]</xpath>
+      	<value>
+        	<comps />
+      	</value>
+    	</li>
+  	</operations>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>*/AlienRace.ThingDef_AlienRace[defName="Alien_Mantodean"]/comps</xpath>
+		<value>
+			<li>
+			  <compClass>CombatExtended.CompPawnGizmo</compClass>
+			</li>
+			<li Class="CombatExtended.CompProperties_Suppressable" />
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>*/ThingDef[@Name="BaseMantoPawn"]/inspectorTabs/li[.="ITab_Pawn_Gear"]</xpath>
+		<value>
+			<li>CombatExtended.ITab_Inventory</li>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>*/ThingDef[@Name="BaseMantoPawn"]/comps</xpath>
+		<value>
+			<li Class="CombatExtended.CompProperties_Inventory" />
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<success>Always</success>
+		<xpath>*/AlienRace.ThingDef_AlienRace[defName="Alien_Mantodean"]/comps</xpath>
+		<value>
+			<statBases>
+				<CarryWeight>200</CarryWeight>
+				<PainShockThreshold>1.20</PainShockThreshold>
+			</statBases>
+		</value>
+	</Operation>
+	
+</Patch>
