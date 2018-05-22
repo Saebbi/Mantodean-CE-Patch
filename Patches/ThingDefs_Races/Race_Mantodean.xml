@@ -90,16 +90,5 @@
 			<li Class="CombatExtended.CompProperties_Inventory" />
 		</value>
 	</Operation>
-
-	<Operation Class="PatchOperationReplace">
-		<success>Always</success>
-		<xpath>*/AlienRace.ThingDef_AlienRace[defName="Alien_Mantodean"]/comps</xpath>
-		<value>
-			<statBases>
-				<CarryWeight>200</CarryWeight>
-				<PainShockThreshold>1.20</PainShockThreshold>
-			</statBases>
-		</value>
-	</Operation>
 	
 </Patch>
